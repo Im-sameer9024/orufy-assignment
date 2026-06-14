@@ -48,6 +48,10 @@ const HomePage = () => {
     defaultValue: 'published',
   });
 
+  const[search] = useQueryState('search', {
+    defaultValue: '',
+  })
+
   const [page, setPage] = useQueryState('page', {
     defaultValue: 1,
     parse: Number,
@@ -56,7 +60,7 @@ const HomePage = () => {
   const { data, isLoading, isFetching } = useGetAllProducts({
     page,
     limit: 9,
-    search: '',
+    search: search,
     status: tab,
   });
 
